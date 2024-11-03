@@ -4,6 +4,7 @@ const {Server}=require('socket.io')
 // const userModel=require('./models/users')
 // const messageModel=require('./models/message')
 const cors=require("cors")
+require("dotenv").config()
 
 const app=express()
 const server=http.createServer(app)
@@ -53,7 +54,8 @@ app.get('/',(req,res)=>{
     res.send("home page ho hai")
 })
 
-server.listen(1111,()=> console.log("server is live"))
+const port=process.env.PORT || 3000
+server.listen(port,()=> console.log("server is live"))
 
 
 
