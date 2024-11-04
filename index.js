@@ -27,6 +27,8 @@ io.on("connection",client=>{
         //     user_id:client.id
         // })
 
+
+        client.username=name
         client.join(roomName)
     io.to(roomName).emit('join-message',`${name} joined`)
     })
@@ -44,7 +46,7 @@ io.on("connection",client=>{
     //sending the message on disconnect
     client.on('disconnect',async ()=>{
         // const deletedUser=await userModel.findOneAndDelete({user_id:client.id})
-        io.to(roomName).emit("leave-message")
+        io.to(roomName).emit("leave-message",client.username)
     })
     
 })
