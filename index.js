@@ -10,7 +10,7 @@ const app=express()
 const server=http.createServer(app)
 const io=new Server(server,{
     cors:{
-        origin:"https://david-chat.netlify.app/"
+ origin: process.env.CLIENT_URL || "https://david-chat.netlify.app"
     }
 })
 
